@@ -8,3 +8,5 @@ build.xml
 .idea/*
 
 *.o
+
+cabal-dev
