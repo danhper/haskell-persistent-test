@@ -1,0 +1,26 @@
+development:
+  adapter: mongodb
+  database: blog_dev
+  host: localhost
+  port: 27017
+  pool: 5
+  connections: 5
+  timeout: 5000
+
+test:
+  adapter: mongodb
+  database: test
+  host: localhost
+  port: 27017
+  pool: 5
+  connections: 5
+  timeout: 5000
+
+production:
+  adapter: mongodb
+  database: blog_prod
+  host: localhost
+  port: 27017
+  pool: 5
+  connections: 5
+  timeout: 5000

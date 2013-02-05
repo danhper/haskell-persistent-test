@@ -17,7 +17,7 @@ cabal-version:       >=1.8
 
 executable blog
   main-is:           Main.hs
-  other-modules:     Article
+  other-modules:     Models
   build-depends:       base ==4.6.*
                      , scotty
                      , persistent

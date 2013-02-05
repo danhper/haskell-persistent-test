@@ -19,10 +19,10 @@ getDBConfig filepath env = do
 
     configVal <- case configs of
         Object o -> return $ o ! env
-        _ -> fail "Invalid Yaml"
+        _ -> fail "Invalid Yaml 1"
 
     let config = loadConfig configVal :: Parser MongoConf
 
     case parse id config of
         A.Success c -> return c
-        _ -> fail "Invalid Yaml"
+        A.Error s -> fail s

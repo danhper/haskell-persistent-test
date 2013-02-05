@@ -10,3 +10,4 @@ build.xml
 *.o
 
 cabal-dev
+dist
