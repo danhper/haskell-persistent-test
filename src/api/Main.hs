@@ -7,6 +7,7 @@ import Web.Scotty hiding (body)
 import Network (PortID (PortNumber))
 import Control.Monad.IO.Class
 import qualified Config
+import qualified Models
 
 
 main :: IO ()
