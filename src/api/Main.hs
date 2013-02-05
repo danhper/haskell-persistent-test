@@ -1,19 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-import qualified Database.Persist.MongoDB as P
 import qualified Database.Persist.Store as S
 import qualified Config
-import Models
+import qualified Api
+import Web.Scotty
 
 main :: IO ()
 main = do
+    -- TODO: set environment with command line argument
     conf <- Config.getDBConfig settingsFile "development"
     pool <- S.createPoolConfig conf
-    P.runMongoDBPoolDef (S.insert $ Article "test" "lorem ipsum") pool
-    return ()
+
+    -- TODO: set port with command line argument
+    scotty 3000 $ do
+        Api.api pool
+
     where
         settingsFile = "../../config/db.yml"
-
-      --middleware logStdoutDev
-      --middleware $ staticPolicy $ addBase "static"
 

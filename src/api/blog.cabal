@@ -6,7 +6,7 @@ version:             0.1.0.0
 synopsis:            Blog
 -- description:
 homepage:            http://tuvistavie.com
-license:             WTFPL
+license:             MIT
 license-file:        LICENSE
 author:              Daniel Perez
 maintainer:          tuvistavie@gmail.com
@@ -25,9 +25,8 @@ executable blog
                      , persistent-template
                      , text
                      , aeson
-                     , network
                      , transformers
                      , yaml
                      , unordered-containers
-                     , time
                      , template-haskell
+                     , time
