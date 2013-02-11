@@ -30,3 +30,4 @@ executable blog
                      , unordered-containers
                      , template-haskell
                      , time
+                     , path-pieces

@@ -2,10 +2,11 @@
 {-# LANGUAGE MultiParamTypeClasses, QuasiQuotes, GeneralizedNewtypeDeriving #-}
 {-# LANGUAGE EmptyDataDecls, GADTs, FlexibleContexts #-}
 
-module Models(
+module Models {- (
     Article(..)
-  , Comments(..)
-) where
+  , Comment(..)
+  , ArticleTitle
+) -} where
 
 import Database.Persist
 import Data.Text
@@ -18,16 +19,17 @@ import Data.Time (UTCTime)
 
 share [mkPersist (mkPersistSettings (ConT ''MongoBackend)) { mpsGeneric = False }, mkMigrate "migrateAll"][persistLowerCase|
 Article
-  title String
-  content Text
-  created UTCTime default=CURRENT_TIME
-  updated UTCTime default=CURRENT_TIME
-  deriving Show Eq Read
-Comments
-  author String
-  content Text
-  deriving Show Eq Read
+    title String
+    content Text
+    created UTCTime default=CURRENT_TIME
+    updated UTCTime default=CURRENT_TIME
+    deriving Show Eq Read
+Comment
+    author String
+    content Text
+    posted UTCTime default=CURRENT_TIME
+    deriving Show Eq Read
 |]
 
 $(deriveJSON id ''Article)
-$(deriveJSON id ''Comments)
+$(deriveJSON id ''Comment)

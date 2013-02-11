@@ -9,7 +9,7 @@ development:
 
 test:
   adapter: mongodb
-  database: test
+  database: blog_test
   host: localhost
   port: 27017
   pool: 5
