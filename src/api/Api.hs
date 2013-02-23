@@ -19,8 +19,8 @@ api pool = do
     get "/articles" $ do
         offset <- paramOpt "offset" 0 :: ActionM Int
         limit <- paramOpt "limit" 20 :: ActionM Int
-        let options = [D.Desc ArticleCreated, D.OffsetBy offset, D.LimitTo limit]
-        entities <- db $ map withKey <$> D.selectList [] options
+        let opts = [D.Desc ArticleCreated, D.OffsetBy offset, D.LimitTo limit]
+        entities <- db $ map withKey <$> D.selectList [] opts
         json entities
 
     get "/articles/:pk" $ do

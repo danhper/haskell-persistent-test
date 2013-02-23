@@ -41,7 +41,7 @@ getOidAsString e = show . getOid . D.unKey $ D.entityKey e
 withKey :: (ToJSON a) => D.Entity a -> Value
 withKey e = case toJSON $ D.entityVal e of
     Object o -> toJSON $ insert "id" (toJSON $ getOidAsString e) o
-    _ -> error "error"
+    _ -> error "could not get key from entity"
 
 json404 :: String -> ActionM ()
 json404 oid = do
