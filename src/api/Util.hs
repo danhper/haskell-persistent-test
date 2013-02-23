@@ -4,10 +4,11 @@ module Util (
     paramOpt
   , withKey
   , toKey
+  , json404
 ) where
 
 import Data.Aeson
-import Web.Scotty
+import Web.Scotty as W
 
 import qualified Data.Text as T
 import qualified Data.Text.Lazy as LT
@@ -19,6 +20,7 @@ import qualified Data.Serialize as Serialize
 import Control.Exception (throw)
 import Data.HashMap.Strict (insert)
 import Data.Maybe
+import Network.HTTP.Types (status404)
 
 
 paramOpt :: (Parsable a) => LT.Text -> a -> ActionM a
@@ -40,3 +42,8 @@ withKey :: (ToJSON a) => D.Entity a -> Value
 withKey e = case toJSON $ D.entityVal e of
     Object o -> toJSON $ insert "id" (toJSON $ getOidAsString e) o
     _ -> error "error"
+
+json404 :: String -> ActionM ()
+json404 oid = do
+    status status404
+    W.json $ object ["error" .= (oid ++ " not found")]

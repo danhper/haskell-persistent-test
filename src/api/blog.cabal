@@ -33,3 +33,4 @@ executable blog
                      , path-pieces
                      , mongoDB
                      , cereal
+                     , http-types

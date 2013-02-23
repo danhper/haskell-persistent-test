@@ -24,8 +24,6 @@ api pool = do
         json entities
 
     get "/articles/:pk" $ do
-        key <- toKey <$> param "pk"
-        maybeArticle <- db $ D.get (key :: ArticleId)
-        case maybeArticle of
-            Just a -> json a
-            Nothing -> error "test"
+        keyStr <- param "pk" :: ActionM String
+        maybeArticle <- db $ D.get (toKey keyStr :: ArticleId)
+        maybe (json404 keyStr) json maybeArticle
