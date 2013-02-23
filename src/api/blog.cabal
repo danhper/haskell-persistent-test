@@ -31,3 +31,5 @@ executable blog
                      , template-haskell
                      , time
                      , path-pieces
+                     , mongoDB
+                     , cereal
