@@ -2,10 +2,12 @@
 
 /* Controllers */
 
-function TopCtrl() {
-
+function TopCtrl($scope, Article) {
+    var article = Article.get({ articleId: 1 }, function() {
+        console.log(article);
+    });
 }
-TopCtrl.$inject = [];
+TopCtrl.$inject = ['$scope', 'Article'];
 
 
 function MyCtrl1() {}

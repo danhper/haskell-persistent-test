@@ -1,7 +1,7 @@
 'use strict';
 
 // Declare app level module which depends on filters, and services
-angular.module('blog', ['myApp.filters', 'myApp.services', 'myApp.directives']).
+angular.module('blog', ['myApp.filters', 'blog.services', 'myApp.directives']).
   config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/', {templateUrl: 'partials/top.html', controller: TopCtrl});
     $routeProvider.when('/view1', {templateUrl: 'partials/partial2.html', controller: MyCtrl2});
