@@ -2,6 +2,11 @@
 
 /* Controllers */
 
+function TopCtrl() {
+
+}
+TopCtrl.$inject = [];
+
 
 function MyCtrl1() {}
 MyCtrl1.$inject = [];

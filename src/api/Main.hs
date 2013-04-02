@@ -12,7 +12,7 @@ main = do
     pool <- S.createPoolConfig conf
 
     -- TODO: set port with command line argument
-    scotty 3000 $
+    scotty 3030 $
         Api.api pool
 
     where

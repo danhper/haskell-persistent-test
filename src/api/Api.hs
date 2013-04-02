@@ -25,5 +25,10 @@ api pool = do
 
     get "/articles/:pk" $ do
         keyStr <- param "pk" :: ActionM String
-        maybeArticle <- db $ D.get (toKey keyStr :: ArticleId)
-        maybe (json404 keyStr) json maybeArticle
+        let maybeKey = toMaybeKey keyStr :: Maybe ArticleId
+        case maybeKey of
+            Just key -> do
+              maybeArticle <- db $ D.get key
+              maybe (json404 keyStr) json maybeArticle
+            Nothing -> json404 keyStr
+

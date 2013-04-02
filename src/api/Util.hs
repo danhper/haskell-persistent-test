@@ -3,7 +3,7 @@
 module Util (
     paramOpt
   , withKey
-  , toKey
+  , toMaybeKey
   , json404
 ) where
 
@@ -26,8 +26,8 @@ import Network.HTTP.Types (status404)
 paramOpt :: (Parsable a) => LT.Text -> a -> ActionM a
 paramOpt k d = param k `rescue` (\_ -> return d)
 
-toKey :: String -> D.KeyBackend D.MongoBackend entity
-toKey = fromJust . fromPathPiece . T.pack
+toMaybeKey :: String -> Maybe (D.KeyBackend D.MongoBackend entity)
+toMaybeKey = fromPathPiece . T.pack
 
 getOid :: S.PersistValue -> DB.ObjectId
 getOid (S.PersistObjectId k) = case Serialize.decode k of

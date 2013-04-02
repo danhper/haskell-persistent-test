@@ -11,3 +11,5 @@ build.xml
 
 cabal-dev
 dist
+
+.sass-cache
